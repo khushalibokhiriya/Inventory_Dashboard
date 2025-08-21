@@ -1,6 +1,6 @@
 export const BASE_URL = 
-//"https://khushali-take-home-coding-test-backend-762543180247.asia-south1.run.app"
-"http://localhost:8080"
+"https://inventory-dashboard-api-762543180247.asia-south1.run.app/"
+//"http://localhost:8080"
 ;
 export const DEPLOYED_LINK= "";
 
