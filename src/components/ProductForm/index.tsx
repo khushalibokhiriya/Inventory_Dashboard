@@ -45,7 +45,7 @@ const ProductForm = () => {
 
       setAlertSnackBarContext({
         open: true,
-        message: error?.message || "Something went wrong!",
+        message: error?.error || "Something went wrong!",
         severity: "error",
       });
 

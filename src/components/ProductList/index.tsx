@@ -77,7 +77,7 @@ const ProductList = () => {
     } catch (error: any) {
       setAlertSnackBarContext({
         open: true,
-        message: error?.message || "Something went wrong!",
+        message: error?.error || "Something went wrong!",
         severity: "error",
       });
     }
@@ -102,19 +102,33 @@ const ProductList = () => {
     } catch (error: any) {
       setAlertSnackBarContext({
         open: true,
-        message: error?.message || "Something went wrong!",
+        message: error?.error || "Something went wrong!",
         severity: "error",
       });
     }
   };
 
   const getData = async () => {
-    setIsLoading(true);
-    await delay(500);
+     try {
+      setIsLoading(true);
+      await delay(500);
 
-    await dispatch(getInventoryData(filters));
+      const response = await dispatch(getInventoryData(filters));
 
-    setIsLoading(false);
+      setAlertSnackBarContext({
+        open: true,
+        message: response.message || "Products fetched successfully!",
+        severity: "success",
+      });
+
+      setIsLoading(false);
+     } catch (error: any){
+        setAlertSnackBarContext({
+          open: true,
+          message: error?.error || "Something went wrong!",
+          severity: "error",
+      });
+     }
   }
 
   useEffect(() => {
